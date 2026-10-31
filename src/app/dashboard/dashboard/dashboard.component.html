@@ -1,0 +1,284 @@
+<header class="header">
+    <div class="container-fluid " style="height: 100%; padding: 0%; ">
+
+
+        <mat-drawer-container class="example-container content">
+            <mat-drawer #drawer style="transform: none;
+        visibility: visible;" mode="side" opened>
+
+                <div class="main">
+                    <div class="text-center ">
+                        <img src="../../../assets/image/ETLabLogo_tranp.png" alt="" style="width: 150px; margin-top: 3%;
+                        margin-bottom: 7%;">
+                    </div>
+                    <h2 style=" color: white;width: 95%;
+                    margin-left: 4%;">Total Sub Station Count : 3538</h2>
+                    <div class="dr-ul">
+                        <mat-card class="mt-crd">
+                            <div class="w-100">
+                                <ul class="ul-t">
+                                    <li (click)="getDiscomMapData(dis.value)" *ngFor="let dis of disco"><a>{{dis.value}}</a></li>
+
+                                </ul>
+                                <div class="chrt">
+                                    <h3 class="chrt-tx">
+                                      DISCOMMs
+                                    </h3>
+                                    <div>
+                                        <div style="min-width: 100%; height: 343px; max-width:100%; margin:0%"  (click)="openTempDialog()" [chart]="donutChart"></div>
+                                      <ng-template #dialogRef let-mydata>
+                                        <!-- <h5>PVVNL</h5> -->
+                                        <!-- <ul *ngIf="mydata">
+                                          <li *ngFor="let item of mydata">{{item}}</li>
+                                        </ul> -->
+                                        <table>
+                                          <style>
+                                            table {
+                                              font-family: arial, sans-serif;
+                                              border-collapse: collapse;
+                                              width: 100%;
+                                            }
+
+                                            td, th {
+                                              border: 1px solid #dddddd;
+                                              text-align: left;
+                                              padding: 8px;
+                                            }
+
+                                            tr:nth-child(even) {
+                                              background-color: #dddddd;
+                                            }
+                                          </style>
+                                          <tr>
+                                            <th>DISCOM</th>
+                                            <th>ZONE</th>
+                                            <th>Circle</th>
+                                            <th>Division</th>
+                                            <th>Sub-Division</th>
+                                          </tr>
+                                          <tr>
+                                            <td>PVVNL  </td>
+                                            <td>BULANDSHAHR</td>
+                                            <td>EDC-2-BULANDSHAHR</td>
+                                            <td>EDD-1-BULANDSHAHR</td>
+                                            <td>EDSD-SIKANDRABAD</td>
+                                          </tr>
+                                          <tr>
+                                            <td>PVVNL  </td>
+                                            <td>NOIDA</td>
+                                            <td>EUDC-NOIDA</td>
+                                            <td>EUDD-5-NOIDA</td>
+                                            <td>EUDSD-9-NOIDA</td>
+                                          </tr>
+                                          <tr>
+                                            <td>PVVNL  </td>
+                                            <td>GHAZIABAD</td>
+                                            <td>EUDC-3-GHAZIABAD</td>
+                                            <td>EUDC-3-GHAZIABAD</td>
+                                            <td>EUDSD-2-AMBEDKAR_DIS</td>
+                                          </tr>
+                                          <tr>
+                                            <td>PVVNL</td>
+                                            <td>MEERUT</td>
+                                            <td>EUDC-MEERUT</td>
+                                            <td>EUDD-4-MEERUT</td>
+                                            <td>EUDSD-12-MEERUT</td>
+                                          </tr>
+                                          <tr>
+                                            <td>PVVNL</td>
+                                            <td>MORADABAD</td>
+                                            <td>EDC-DHAMPUR</td>
+                                            <td>EDD-NAJIBABAD</td>
+                                            <td>EDSD-1-NAJIBABAD</td>
+                                          </tr>
+                                          <tr>
+                                            <td>PVVNL  </td>
+                                            <td>SAHARANPUR</td>
+                                            <td>EDC-SHAMLI</td>
+                                            <td>EDD-2-SHAMLI</td>
+                                            <td>EDSD-1-SHAMLI</td>
+                                          </tr>
+                                        </table>
+
+                                      </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </mat-card>
+                    </div>
+                    <div class="dr-ul">
+                        <mat-card class="mt-crd">
+                            <div class="w-100">
+<!--                                <ul class="ul-t">-->
+<!--                                    <li ><a>All</a></li>-->
+<!--                                    <li ><a>TRIEU</a></li>-->
+<!--                                    <li><a>PEYDD</a></li>-->
+<!--                                    <li ><a>GHRT</a></li>-->
+<!--                                    <li><a>THUTY</a></li>-->
+<!--                                    <li><a>HRTEU</a></li>-->
+<!--                                    <li><a>ETREG</a></li>-->
+<!--                                </ul>-->
+                                <div class="chrt">
+                                    <h3 class="chrt-tx">
+                                        DISTRICT
+                                    </h3>
+                                  <div class="col-3 " style="text-align: center;">
+                                    <mat-form-field appearance="outline" [floatLabel]="'always'" [floatLabel]="true">
+                                      <mat-label>Select District</mat-label>
+                                      <mat-select  [(value)]="selected1" >
+                                        <mat-option value="All" (click)="changeZone('all')">All</mat-option>
+                                        <mat-option value="delhi" (click)="changeZone('delhi')">NOIDA</mat-option>
+                                        <mat-option value="up" (click)="changeZone('up')">GHAZIABAD</mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+
+<!--                                  </div>-->
+<!--                                    <div class="col-3" style="text-align: center;">-->
+<!--                                    <mat-form-field appearance="outline" [floatLabel]="'always'">-->
+<!--                                      <mat-label>Select District</mat-label>-->
+<!--                                      <mat-select  [(value)]="selected1">-->
+<!--                                        <mat-option value="All">All</mat-option>-->
+<!--                                        <mat-option value="warn">NOIDA</mat-option>-->
+<!--                                        <mat-option value="accent">GHAZIABAD</mat-option>-->
+<!--                                      </mat-select>-->
+<!--                                    </mat-form-field>-->
+
+                                    </div>
+                                    <div>
+                                        <div style="min-width: 100%; height: 343px; max-width:100%; margin:0%" [chart]="donutChart2"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </mat-card>
+                    </div>
+                </div>
+
+
+            </mat-drawer>
+            <mat-drawer-content>
+
+                <div class="box row">
+                    <div class="w-100">
+                        <ul>
+                            <li style="background: gray;">
+                                <a>Dashboard</a>
+                            </li>
+                            <li routerLink="/profile" >
+                                <a>Profile</a>
+                            </li>
+                            <li >
+                                <a>Report</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-sign-out-alt" style="font-size: 20px;"></i>
+                            </li>
+                        </ul>
+                    </div><br>
+
+                    <h2 class="text-align-center">UPPCL Substation Monitoring Dashboard</h2>
+                    <button (click)="drawer.toggle()" class="btn1"> <i class="fa fa-chevron-left"><span class="ml-2">
+                                <i class="fa fa-chevron-right"></i></span></i></button>
+                </div>
+
+                <div class="w-100 p-2">
+                    <mat-divider></mat-divider>
+                    <div class="row mt-4">
+                      <div class="col-3 " style="text-align: center;">
+                        <mat-form-field appearance="outline" [floatLabel]="'always'" [floatLabel]="true">
+                          <mat-label>Select DISCOMM</mat-label>
+                          <mat-select   name="discom" [(ngModel)]='optionData.discom'>
+                            <mat-option value="all" selected>All</mat-option>
+                            <mat-option *ngFor="let discom of discoms" [value]="discom.discomms" (click)="getZone(discom.discomms)">{{discom.discomms}}</mat-option>
+
+                          </mat-select>
+                        </mat-form-field>
+
+                      </div>
+                        <div class="col-3 " style="text-align: center;">
+                            <mat-form-field appearance="outline" [floatLabel]="'always'" [floatLabel]="true">
+                                <mat-label>Select Zone</mat-label>
+                                <mat-select  name="zone" [(ngModel)]='optionData.zone' >
+                                  <mat-option value="all" selected>All</mat-option>
+                                    <mat-option  *ngFor="let zone of zones" [value]="zone.zone" (click)="getDistrict(zone.zone)">{{zone.zone}}</mat-option>
+
+                                  </mat-select>
+                              </mat-form-field>
+
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                            <mat-form-field appearance="outline" [floatLabel]="'always'">
+                                <mat-label>Select District</mat-label>
+                                <mat-select  name="zone" [(ngModel)]='optionData.district'>
+                                  <mat-option value="all" selected (click)="getCircle('all')">All</mat-option>
+                                    <mat-option *ngFor="let district of districts" [value]="district.district" (click)="getCircle(district.district)" >{{district.district}}</mat-option>
+
+                                  </mat-select>
+                              </mat-form-field>
+
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                            <mat-form-field appearance="outline" [floatLabel]="'always'" >
+                                <mat-label>Select Circle</mat-label>
+                                <mat-select  name="zone" [(ngModel)]='optionData.circle'>
+                                  <mat-option value="all" selected (click)="getDivision('all')">All</mat-option>
+                                    <mat-option *ngFor="let circle of circles" [value]="circle.circle" (click)="getDivision(circle.circle)" >{{circle.circle}}</mat-option>
+
+                                  </mat-select>
+                              </mat-form-field>
+
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                            <mat-form-field appearance="outline" [floatLabel]="'always'" >
+                                <mat-label>Select Division</mat-label>
+                                <mat-select  name="zone" [(ngModel)]='optionData.division'>
+                                  <mat-option value="all" selected  (click)="getSubDivision('all')">All</mat-option>
+                                    <mat-option *ngFor="let division of divisions" [value]="division.division" (click)="getSubDivision(division.division)"  >{{division.division}}</mat-option>
+
+                                  </mat-select>
+                              </mat-form-field>
+
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                            <mat-form-field appearance="outline" [floatLabel]="'always'" >
+                                <mat-label>Select Sub-Division</mat-label>
+                                <mat-select  name="zone" [(ngModel)]='optionData.sub_division'>
+                                  <mat-option value="all" selected (click)="getSubStation('all')">All</mat-option>
+                                    <mat-option *ngFor="let subDivision of subDivisions" [value]="subDivision.subdivision" (click)="getSubStation(subDivision.subdivision)" >{{subDivision.subdivision}}</mat-option>
+
+                                  </mat-select>
+                              </mat-form-field>
+
+                        </div>
+                        <div class="col-3" style="text-align: center;">
+                        <mat-form-field appearance="outline" [floatLabel]="'always'" >
+                          <mat-label>Select Sub-Station</mat-label>
+                          <mat-select  name="zone" [(ngModel)]='optionData.sub_station'>
+                            <mat-option value="all" selected >All</mat-option>
+                              <mat-option *ngFor="let subStation of subStations" [value]="subStation.substation" (click)="getSubStationMapData(subStation.substation)" >{{subStation.substation}}</mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+
+                      </div>
+                    </div>
+                </div>
+                <div  class="map-bx">
+                    <div
+                    leaflet
+                    style="height: 424px;"
+                    [leafletOptions]="options"
+                    [leafletBaseLayers]="baseLayers"
+                    [leafletLayersControlOptions]="layersControlOptions"
+                    [leafletMarkerCluster]="markerClusterData"
+                    [leafletMarkerClusterOptions]="markerClusterOptions"
+                    (leafletMarkerClusterReady)="markerClusterReady($event)"
+                    (leafletMapReady)="onMapReady($event)"
+                  ></div>
+            </div>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </div>
+</header>

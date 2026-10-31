@@ -1,0 +1,203 @@
+
+.header{
+    .mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-fl{
+        cursor: pointer;
+    background: white !important;
+    border: 1px solid gray !important;
+    }
+    height: 100%;
+    padding: 0% !important;
+    .content{
+        height: 100%;
+    }
+    .box{
+        height: 12%;
+        background: #283048;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+
+
+
+    color: white;
+    ul{
+        margin: 0%;
+        float: right !important;
+        width: 38%;
+        padding: 1%;
+
+    }
+    li{
+        display: inline;
+        margin: 1%;
+        padding: 3%;
+        &:hover{
+            background-color: gray;
+        }
+
+    }
+    & li:hover{
+        cursor: pointer;
+    }
+
+    h2{
+
+        text-align: center;
+    }
+}
+ .btn1{
+    padding-left: 0px;
+    position: absolute;
+    top: 58%;
+    width:53px;
+    left: 0%;
+    background: white;
+    border: none;
+    font-size: 24px;
+    color: darkslategray;
+ }
+ mat-drawer{
+    background: #283048;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #283048 #283048);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #283048, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+
+    width: 31%;
+    padding-top: 12px !important;
+}
+.dr-ul{
+.mt-crd{
+    background: #283048;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+height: 395px;
+
+
+
+
+    color: white;
+    width: 100%;
+  .chrt{
+    width: 99%;
+    height: 347px;
+    position: relative;
+    border: 2px solid #0d283d;
+    border-left: 40px solid #0d283d;
+    //padding: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: small;
+    display: inline-block;
+    .chrt-tx{
+        font-size: 18px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: -30px;
+    transform: translateX(-40%) translateY(-164%) rotate(
+270deg);
+    }
+  }
+}
+.ul-t{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+li{
+    background-color: #5e5656;
+    float: left;
+    cursor: pointer;
+    a{
+        cursor: pointer;
+        display: block;
+        color: white;
+        font-weight: 400;
+        border: 1px solid #616161;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 9px;
+        padding-right: 9px;
+        text-decoration: none;
+        font-size: 12px;
+    }
+    &:hover{
+        background-color: gray;
+    }
+}
+}
+mat-drawer-content{
+    overflow-x: hidden;
+    background-image: url(../../../assets/image/white-background-geo-shapes.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: black;
+  }
+  /* Font color */
+  input.mat-input-element {
+    color: black;
+  }
+  .map-bx{
+    width: 85%;
+    border: 11px solid cadetblue;
+    margin: auto;
+    border-radius: 6px 6px 6px 6px;
+    height: 445px;
+  }
+  .map-container {
+    position: absolute;
+    top: 34%;
+    left: 64px;
+    right: 0;
+    bottom: 0;
+    width: 83%;
+    margin: 30px;
+    height: 59%;
+  }
+
+  .map-frame {
+    //border: 2px solid black;
+    height: 93%;
+  }
+
+  #map {
+    height: 99%;
+  }
+}
+// .box{
+//   //  height: 92px;
+//     background-color: black;
+//     color: white;
+//     ul{
+//         float: right !important;
+//         width: 27%;
+
+//     }
+//     li{
+//         display: inline;
+
+//         margin: 4%;
+//     }
+//     & li:hover{
+//         cursor: pointer;
+//     }
+//     h1{
+//         margin-top: 2%;
+//         text-align: right;
+//     }
+
+// }

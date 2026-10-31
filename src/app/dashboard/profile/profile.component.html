@@ -1,0 +1,303 @@
+<div class="admin-layout">
+
+  <!-- Sidebar -->
+  <!-- <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <span>AdminPanel</span>
+    </div>
+
+    <nav class="navigation">
+      <a class="nav-item" href="javascript:void(0)">
+        <span>⌂</span> Dashboard
+      </a>
+
+      <a class="nav-item" href="javascript:void(0)">
+        <span>♙</span> Users
+      </a>
+
+      <a class="nav-item" href="javascript:void(0)">
+        <span>⚙</span> Roles & Permissions
+      </a>
+
+      <a class="nav-item" href="javascript:void(0)">
+        <span>▤</span> Reports
+      </a>
+
+      <a class="nav-item" href="javascript:void(0)">
+        <span>⚙</span> Settings
+      </a>
+
+      <a class="nav-item active" href="javascript:void(0)">
+        <span>♙</span> My Profile
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="online-dot"></div>
+      <div>
+        <strong>System Online</strong>
+        <small>Administrator Access</small>
+      </div>
+    </div>
+  </aside> -->
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <span class="breadcrumb">Dashboard / Profile</span>
+        <h2>My Profile</h2>
+      </div>
+
+      <div class="topbar-user">
+        <span class="notification">♧</span>
+        <div class="mini-avatar">N</div>
+        <div>
+          <strong>{{ profile.name }}</strong>
+          <small>{{ profile.role }}</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Profile Banner -->
+    <section class="profile-banner">
+      <div class="banner-decoration"></div>
+
+      <div class="profile-avatar">
+        {{ profile.name.charAt(0) }}
+        <span class="avatar-status"></span>
+      </div>
+
+      <div class="profile-intro">
+        <span class="welcome-text">WELCOME BACK</span>
+        <h1>{{ profile.name }}</h1>
+
+        <p class="designation">
+          {{ profile.designation }}
+        </p>
+
+        <div class="role-badge">
+          <span>✓</span> {{ profile.role }}
+        </div>
+
+        <p class="profile-description">
+          Manage your personal information, work details
+          and account security from one place.
+        </p>
+      </div>
+
+      <button class="edit-button" (click)="toggleEdit()">
+        ✎ {{ isEditing ? 'Cancel Edit' : 'Edit Profile' }}
+      </button>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="profile-tabs">
+      <button
+        *ngFor="let tab of tabs"
+        [class.selected]="activeTab === tab"
+        (click)="setTab(tab)">
+        {{ tab }}
+      </button>
+    </div>
+
+    <!-- Overview -->
+    <section *ngIf="activeTab === 'Overview'">
+
+      <div class="dashboard-grid">
+
+        <!-- Personal Details -->
+        <div class="card personal-card">
+          <div class="card-heading">
+            <div>
+              <span class="eyebrow">YOUR ACCOUNT</span>
+              <h3>Personal Information</h3>
+            </div>
+            <span class="heading-icon">♙</span>
+          </div>
+
+          <form #profileForm="ngForm" (ngSubmit)="saveProfile()">
+
+            <div class="form-field">
+              <label>Full Name</label>
+              <input
+                name="name"
+                [(ngModel)]="profile.name"
+                [readonly]="!isEditing"
+                required />
+            </div>
+
+            <div class="form-field">
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                [(ngModel)]="profile.email"
+                [readonly]="!isEditing"
+                required email />
+            </div>
+
+            <div class="form-field">
+              <label>Phone Number</label>
+              <input
+                name="phone"
+                [(ngModel)]="profile.phone"
+                [readonly]="!isEditing" />
+            </div>
+
+            <div class="form-field">
+              <label>Department</label>
+              <input
+                name="department"
+                [(ngModel)]="profile.department"
+                [readonly]="!isEditing" />
+            </div>
+
+            <div class="form-field">
+              <label>Location</label>
+              <input
+                name="location"
+                [(ngModel)]="profile.location"
+                [readonly]="!isEditing" />
+            </div>
+
+            <div class="form-field">
+              <label>Joining Date</label>
+              <input
+                [value]="profile.joiningDate"
+                readonly />
+            </div>
+
+            <div class="form-actions" *ngIf="isEditing">
+              <button
+                type="submit"
+                class="save-button"
+                [disabled]="profileForm.invalid">
+                Save Changes
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Right Side -->
+        <div class="right-column">
+
+          <!-- Stats -->
+          <div class="stats-grid">
+            <div
+              class="stat-card"
+              *ngFor="let stat of stats"
+              [ngClass]="stat.color">
+
+              <div class="stat-icon">{{ stat.icon }}</div>
+              <p>{{ stat.title }}</p>
+              <h2>{{ stat.value | number }}</h2>
+              <span class="stat-caption">Account overview</span>
+            </div>
+          </div>
+
+          <!-- About -->
+          <div class="card about-card">
+            <div class="card-heading">
+              <div>
+                <span class="eyebrow">PROFILE SUMMARY</span>
+                <h3>About Me</h3>
+              </div>
+              <span class="heading-icon">✧</span>
+            </div>
+
+            <p>{{ profile.about }}</p>
+          </div>
+
+          <!-- Activity -->
+          <div class="card activity-card">
+            <div class="card-heading">
+              <div>
+                <span class="eyebrow">ACCOUNT HISTORY</span>
+                <h3>Recent Activity</h3>
+              </div>
+              <span class="heading-icon">◷</span>
+            </div>
+
+            <div class="activity-list">
+              <div
+                class="activity-item"
+                *ngFor="let activity of activities; let i = index">
+
+                <div class="activity-marker"
+                     [class.marker-green]="i === 0">
+                </div>
+
+                <div class="activity-info">
+                  <strong>{{ activity.title }}</strong>
+                  <small>{{ activity.time }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal Info Tab -->
+    <section class="card tab-content"
+             *ngIf="activeTab === 'Personal Info'">
+      <h3>Personal Information</h3>
+      <p>View and edit your name, email, phone and location in Overview.</p>
+      <button class="save-button" (click)="setTab('Overview')">
+        Open Profile Details
+      </button>
+    </section>
+
+    <!-- Work Info Tab -->
+    <section class="card tab-content"
+             *ngIf="activeTab === 'Work Info'">
+      <h3>Work Information</h3>
+
+      <div class="form-field">
+        <label>Designation</label>
+        <p>{{ profile.designation }}</p>
+      </div>
+
+      <div class="form-field">
+        <label>Department</label>
+        <p>{{ profile.department }}</p>
+      </div>
+
+      <div class="form-field">
+        <label>Role</label>
+        <p>{{ profile.role }}</p>
+      </div>
+    </section>
+
+    <!-- Security Tab -->
+    <section class="card tab-content"
+             *ngIf="activeTab === 'Security'">
+      <h3>Security Settings</h3>
+
+      <div class="security-row">
+        <div>
+          <strong>Password</strong>
+          <p>Change your account password periodically.</p>
+        </div>
+        <button class="outline-button"
+                >
+          Change Password
+        </button>
+      </div>
+
+      <div class="security-row">
+        <div>
+          <strong>Two-Factor Authentication</strong>
+          <p>Enable an additional verification step for login.</p>
+        </div>
+        <span class="security-badge">Recommended</span>
+      </div>
+    </section>
+
+  </main>
+</div>

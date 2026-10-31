@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+ ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+mat-form-field {
+  .mat-hint, input, ::placeholder, .mat-form-field-label {
+     color: black;
+     font-size: 20px;
+    // font-weight: bold;
+  }
+
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background:darkgray; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: lightgray; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
